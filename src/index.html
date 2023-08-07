@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang=“en”>
+  <!-- Description browser -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content=“” />
+    <meta name="keywords" content=“…” />
+    <meta name="author" content="Ferran Cipres" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title -->
+    <title> Rick&Morty | Ferran Cipres</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png">
+    
+    <!-- Link CSS -->
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Link Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+   
+    <!-- Script type: module -->
+    <script type="module" src="../dist/index.js"></script>
+    
+    <!-- Link Icon Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  </head>
+
+  <!-- Body -->
+  <body>
+    <!-- Header -->
+    <header>
+        <!-- Falta imagen -->
+        <div class="header_title">
+          <img class="img_title sticky-top" src="/assets/img/title2.png" alt="title">
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <!-- section principal -->
+      <section class="sidecontainer d-flex">
+          <!-- contenedor aside -->
+          <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark size">
+            <span class="fs-4 green-letter">List of episodes</span>
+            <hr>
+            <ul id="containerEpisodes" class="nav nav-pills flex-column mb-auto">
+            <!-- li class="nav-item" -->
+            </ul>
+            <button id="btnLoadMore" type="button" class="btn btn-success btn-lg">Load more</button>
+            
+
+          </div>
+          
+          <!-- contenedor display -->
+          <div class="content-main" id="content-main">
+            <!-- Personajes -->
+          </div>
+      </section>
+
+    </main>
+  </body>
+</html>
