@@ -33,3 +33,7 @@
 .green-letter {
     color: rgb(80, 250, 83);
 }
+
+.displayNone {
+    display: none !important;
+}
