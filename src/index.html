@@ -1,31 +1,21 @@
 <!DOCTYPE html>
 <html lang=“en”>
-  <!-- Description browser -->
 <head>
     <meta charset="utf-8">
-    <meta name="description" content=“” />
-    <meta name="keywords" content=“…” />
-    <meta name="author" content="Ferran Cipres" />
+    <meta name="description" content=“Rick&Morty” />
+    <meta name="keywords" content=“HTML,CSS,JS” />
+    <meta name="author" content="Ferran Cipres Asensio" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Title -->
-    <title> Rick&Morty | Ferran Cipres</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png">
-    
-    <!-- Link CSS -->
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    
-    <!-- Link Bootstrap -->
+    <title> Rick&Morty API | Ferran Cipres</title>
+
+    <link rel="icon" type="image/x-icon" href="/assets/img/rickandmorty_favicon.png">
+    <link href="/css/index.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-   
-    <!-- Script type: module -->
-    <script type="module" src="../dist/index.js"></script>
-    
-    <!-- Link Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script type="module" src="../dist/index.js"></script>  
   </head>
 
   <!-- Body -->
@@ -41,14 +31,18 @@
     <!-- Main -->
     <main>
       <!-- section principal -->
-      <section class="sidecontainer d-flex">
+      <section class="flexeo">
           <!-- contenedor aside -->
+          
           <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark size">
             <span class="fs-4 letter">List of episodes</span>
             <hr>
             <ul id="containerEpisodes" class="containerEpisodes">
             <!-- li class="nav-item" -->
             </ul>
+            <div id="btnLoadMore" class="d-grid gap-2">
+              <button class="btn letter_background" type="button">Load More</button>
+            </div>
           </div>
           <!-- contenedor display -->
           <div class="containerDisplay" id="containerDisplay">
@@ -60,42 +54,29 @@
 
           <!-- Modal -->
           <div class="modal fade" id="characterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <!--IMAGEN-->
-                        <img id="modalCharacter1" src="" class="img_fluid rounded-start" alt="#">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <!-- NOMBRE & INFORMACION-->
-                          <h5 id="modalCharacter_name" class="card-title">Card title</h5>
-                          <p id="modalCharacter_info" class="card-text">This is a text</p>
-                          <p id="modalCharacter_info" class="card-text">This is a text</p>
-                          <p id="modalCharacter_info" class="card-text">This is a text</p>
-                          <p id="modalCharacter_info" class="card-text">This is a text</p>
-                          <p id="modalCharacter_info" class="card-text">This is a text</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                  <h5 class="modal-title" id="characterModalLabel"> Character Details</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>  
+                <div class="modal-body" id="characterModalBody">
+                <!-- Character Details -->
                 </div>
-                <div id="modalCharacter EpisodeBtnContainer" class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <!-- <button type="button" class="btn btn-primary">Save changes</button>-->
+                <div class="modal-list-episodes " id="characterModalListEpisodes">
+                  <h5 class="modal-title ms-3" id="characterModalLabel"> List of Episodes</h5>
+                  <hr>
+                  <ul id="containerListEpisodes" class="">
+                  <!-- List of episodes --> 
+                  </ul>
+                  
                 </div>
               </div>
             </div>
           </div>
-
       </section>
   </body>
 
   <!-- Footer -->
-  <footer>
-  </footer>
+  <footer></footer>
 </html>

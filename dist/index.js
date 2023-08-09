@@ -13,20 +13,27 @@ const episodeList = document.querySelector("#containerEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
 export function init() {
     return __awaiter(this, void 0, void 0, function* () {
-        getAllEpisodes();
+        getAllEpisodes(countPage);
     });
 }
-function getAllEpisodes() {
+let countPage = 1;
+function getAllEpisodes(countPage) {
     return __awaiter(this, void 0, void 0, function* () {
-        for (let i = 1; i <= 3; ++i) {
-            const episodes = yield getEpisodes(i);
-            episodes.forEach((episode) => {
-                createEpisodeLink(episode);
-            });
-        }
-        ;
+        const episodes = yield getEpisodes(countPage);
+        episodes.forEach((episode) => {
+            createEpisodeLink(episode);
+        });
     });
 }
+const btnLoadMore = document.querySelector("#btnLoadMore");
+btnLoadMore.addEventListener("click", () => {
+    if (countPage === 3)
+        alert("pendiente eliminar");
+    else {
+        countPage++;
+        getAllEpisodes(countPage);
+    }
+});
 function createEpisodeLink(episode) {
     const containerList = document.createElement("li");
     containerList.className = "nav-item nav-link";
@@ -79,9 +86,10 @@ function showEpisodeContent(url) {
 function createCardCharacter(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const char = yield getSingleCharacter(url);
-        console.log(char);
         const containerCharacter = document.createElement("div");
         containerCharacter.classList.add("outline");
+        const containerCharacterSingle = document.createElement("div");
+        containerCharacterSingle.classList.add("extra");
         const miputaMadre = document.createElement("img");
         miputaMadre.classList.add("card-img-top");
         miputaMadre.src = char.image;
@@ -90,9 +98,9 @@ function createCardCharacter(url) {
         miputoPadre.classList.add("letter");
         miputoPadre.innerText = char.name;
         const statusCharacter = document.createElement("h6");
-        console.log(char.status);
+        statusCharacter.textContent = `Status: ${char.status}`;
         const specieCharacter = document.createElement("h6");
-        console.log(char.species);
+        specieCharacter.textContent = `Species: ${char.species}`;
         const card = document.createElement("button");
         card.classList.add("card");
         card.style.width = "20em";
@@ -103,11 +111,71 @@ function createCardCharacter(url) {
             showModal(char);
         });
         card.appendChild(miputaMadre);
-        card.appendChild(miputoPadre);
+        containerCharacterSingle.appendChild(miputoPadre);
+        containerCharacterSingle.appendChild(statusCharacter);
+        containerCharacterSingle.appendChild(specieCharacter);
         containerCharacter.appendChild(card);
+        containerCharacter.appendChild(containerCharacterSingle);
         containerDisplay === null || containerDisplay === void 0 ? void 0 : containerDisplay.appendChild(containerCharacter);
     });
 }
 function showModal(char) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const modalBody = document.querySelector("#characterModalBody");
+        modalBody.replaceChildren();
+        const modalContent = document.createElement("div");
+        modalContent.classList.add("modal-info");
+        const modalContentDescription = document.createElement("div");
+        modalContentDescription.classList.add("modalContentDescription");
+        const characterImg = document.createElement("img");
+        characterImg.src = char.image;
+        characterImg.alt = char.name;
+        characterImg.classList.add("img-fluid", "mb-3");
+        modalContentDescription.appendChild(characterImg);
+        const characterName = document.createElement("h6");
+        characterName.classList.add("mb-2");
+        characterName.textContent = char.name;
+        modalContentDescription.appendChild(characterName);
+        const statusParagraph = document.createElement("p");
+        statusParagraph.textContent = `Status: ${char.status}`;
+        modalContentDescription.appendChild(statusParagraph);
+        const speciesParagraph = document.createElement("p");
+        speciesParagraph.textContent = `Species: ${char.species}`;
+        modalContentDescription.appendChild(speciesParagraph);
+        const genderParagraph = document.createElement("p");
+        genderParagraph.textContent = `Gender: ${char.gender}`;
+        modalContentDescription.appendChild(genderParagraph);
+        modalContent.appendChild(modalContentDescription);
+        modalBody.appendChild(modalContent);
+        const modalListEpisodes = document.querySelector("#characterModalListEpisodes");
+        modalListEpisodes.classList.add("list-unstyled");
+        const TEST = char.episode;
+        TEST.forEach((element) => __awaiter(this, void 0, void 0, function* () {
+            const PRUEBA = yield getEpisodesTitle(element);
+            const PRUEBA2 = yield getEpisodesCode(element);
+            const containerEpisodes = document.querySelector('#containerListEpisodes');
+            const LALALA = document.createElement('li');
+            LALALA.textContent = PRUEBA;
+            LALALA.setAttribute("data-bs-dismiss", "modal");
+            LALALA.addEventListener("click", () => {
+                showEpisodeContent(element);
+            });
+            containerEpisodes === null || containerEpisodes === void 0 ? void 0 : containerEpisodes.appendChild(LALALA);
+        }));
+    });
+}
+function getEpisodesTitle(element) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const episodesTitle = yield getSingleEpisodes(element);
+        const episodesName = episodesTitle.name;
+        return episodesName;
+    });
+}
+function getEpisodesCode(element) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const episodesCode = yield getSingleEpisodes(element);
+        const episodesId = episodesCode.episode;
+        return episodesId;
+    });
 }
 //# sourceMappingURL=index.js.map

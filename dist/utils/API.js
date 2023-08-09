@@ -9,9 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const urlBase = "https://rickandmortyapi.com/api";
 const urlEpisodes = `${urlBase}/episode`;
-export function getEpisodes(i) {
+const urlCharacters = `${urlBase}/character`;
+const urlLocation = `${urlBase}/location`;
+export function getEpisodes(countPage) {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(urlEpisodes + `?page=${i}`);
+        const response = yield fetch(urlEpisodes + `?page=${countPage}`);
         const data = yield response.json();
         return data.results;
     });

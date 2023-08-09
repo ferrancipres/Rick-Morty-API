@@ -1,4 +1,3 @@
-// Definir la interface Episodes
 interface Episodes {
     id: string;
     name: string;

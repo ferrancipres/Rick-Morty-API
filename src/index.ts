@@ -4,17 +4,26 @@ const episodeList = document.querySelector("#containerEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
 
 export async function init() {   
-    getAllEpisodes();
+    getAllEpisodes(countPage);
 }
 
-async function getAllEpisodes() {
-    for(let i=1; i <= 3; ++i) {
-        const episodes = await getEpisodes(i);
-        episodes.forEach ((episode) => {
-            createEpisodeLink(episode);
-        });
-    };
+let countPage = 1;
+async function getAllEpisodes(countPage:number) {
+    const episodes = await getEpisodes(countPage);
+    episodes.forEach ((episode) => {
+        createEpisodeLink(episode);
+    });
 }
+
+//PENDIENTE
+const btnLoadMore = document.querySelector("#btnLoadMore");
+btnLoadMore!.addEventListener("click", () => {
+    if(countPage === 3) alert("pendiente eliminar");
+    else {
+        countPage++;
+        getAllEpisodes(countPage);
+    }
+});
 
 function createEpisodeLink(episode:Episodes) {
     const containerList = document.createElement("li");
@@ -89,10 +98,12 @@ async function showEpisodeContent(url:string) {
 
 async function createCardCharacter(url:string) {
     const char = await getSingleCharacter(url);
-    console.log(char)
 
     const containerCharacter = document.createElement("div");
     containerCharacter.classList.add("outline");
+
+    const containerCharacterSingle = document.createElement("div");
+    containerCharacterSingle.classList.add("extra");
 
     const miputaMadre = document.createElement("img");
     miputaMadre.classList.add("card-img-top");
@@ -103,13 +114,11 @@ async function createCardCharacter(url:string) {
     miputoPadre.classList.add("letter");
     miputoPadre.innerText = char.name;
 
-    // ERROR
     const statusCharacter = document.createElement("h6");
-    console.log(char.status);
+    statusCharacter.textContent = `Status: ${char.status}`;
 
-    //ERROR
     const specieCharacter = document.createElement("h6");
-    console.log(char.species);
+    specieCharacter.textContent = `Species: ${char.species}`;
 
     const card = document.createElement("button");
     card.classList.add("card");
@@ -122,12 +131,85 @@ async function createCardCharacter(url:string) {
     });
 
     card.appendChild(miputaMadre);
-    card.appendChild(miputoPadre);
+    containerCharacterSingle.appendChild(miputoPadre);
+    containerCharacterSingle.appendChild(statusCharacter);
+    containerCharacterSingle.appendChild(specieCharacter);
     containerCharacter.appendChild(card);
+    containerCharacter.appendChild(containerCharacterSingle);
     containerDisplay?.appendChild(containerCharacter);
 }
 
-function showModal(char:Character) {
-    // que quieres que aparezca en el modal
-    // parametro que le pasamos ???
+async function showModal(char:Character) {
+    const modalBody = document.querySelector("#characterModalBody");
+    modalBody!.replaceChildren();
+
+    const modalContent = document.createElement("div");
+    modalContent.classList.add("modal-info");
+
+    const modalContentDescription = document.createElement("div");
+    modalContentDescription.classList.add("modalContentDescription")
+
+    const characterImg = document.createElement("img");
+    characterImg.src = char.image;
+    characterImg.alt = char.name;
+    characterImg.classList.add("img-fluid", "mb-3");
+    modalContentDescription.appendChild(characterImg);
+
+    const characterName = document.createElement("h6");
+    characterName.classList.add("mb-2");
+    characterName.textContent = char.name;
+    modalContentDescription.appendChild(characterName);
+
+    const statusParagraph = document.createElement("p");
+    statusParagraph.textContent = `Status: ${char.status}`;
+    modalContentDescription.appendChild(statusParagraph);
+
+    const speciesParagraph = document.createElement("p");
+    speciesParagraph.textContent = `Species: ${char.species}`;
+    modalContentDescription.appendChild(speciesParagraph);
+
+    const genderParagraph = document.createElement("p");
+    genderParagraph.textContent = `Gender: ${char.gender}`;
+
+    modalContentDescription.appendChild(genderParagraph);
+    modalContent.appendChild(modalContentDescription);  
+    // Assembler general
+    modalBody!.appendChild(modalContent);
+
+    // Elemento para poner la LISTA
+    const modalListEpisodes = document.querySelector("#characterModalListEpisodes");
+    modalListEpisodes!.classList.add("list-unstyled");
+
+    const TEST = char.episode;
+    //console.log(char.episode);  // Array de string**
+    TEST.forEach(async element => { // para separar Array
+        const PRUEBA = await getEpisodesTitle(element);
+        const PRUEBA2 = await getEpisodesCode(element); 
+
+        const containerEpisodes = document.querySelector('#containerListEpisodes');
+        //containerEpisodes?.replaceChildren(); // vaciarlo
+        const LALALA = document.createElement('li');
+        LALALA.textContent = PRUEBA; 
+        LALALA.setAttribute("data-bs-dismiss", "modal");
+        LALALA.addEventListener("click",() => {
+            showEpisodeContent(element);
+        });
+
+        containerEpisodes?.appendChild(LALALA);
+        //modalListEpisodes(PRUEBA, PRUEBA2);
+    });
+}
+
+// Funcion para coger Name
+async function getEpisodesTitle(element:string): Promise<string> {
+    const episodesTitle = await getSingleEpisodes(element);
+    const episodesName = episodesTitle.name // title
+    return episodesName;
+}
+
+// Funcion coger el CODE
+async function getEpisodesCode(element:string): Promise<string> {
+    const episodesCode = await getSingleEpisodes(element);
+    const episodesId = episodesCode.episode // ID
+    return episodesId;
 }

@@ -1,4 +1,3 @@
-// Definir la interface Location
 interface Location {
     id: number;
     name: string;

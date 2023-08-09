@@ -1,7 +1,6 @@
-/* Import section */
 @import url("reset.css");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
-/* Generic section */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,7 +18,7 @@
 }
 
 .img_title {
-    width: 200px;
+    width: 300px;
     margin-bottom: 10px;
 }
 
@@ -37,6 +36,11 @@
 
 .letter {
     color: rgb(80, 250, 83);
+}
+
+.letter_background {
+    background-color: rgb(80, 250, 83)!important;
+    color: white;
 }
 
 .displayNone {
@@ -81,7 +85,11 @@
 
 .outline {
     display: inline-block;
+    justify-content: center;
+    align-items: center;
     margin: 30px;
+    background-color: white;
+    height: 400px;
 }
 
 .title-episode {
@@ -96,4 +104,29 @@
 .subtitle-episode {
     font-size: 20px;
     color: white;
+}
+
+.extra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContentDescription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flexeo {
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 750px) {
+    .flexeo {
+        display: flex;
+        flex-direction: column;
+    }
 }
