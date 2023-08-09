@@ -1,8 +1,3 @@
-// Seccion : Colocar todas las funciones para trabajar con la API
-import { init } from "../index.js";
-// Que queremos que haga la función 
-    // fetch para recoger datos de episodios de pagina en pagina..CUIDADO
-
 const urlBase= "https://rickandmortyapi.com/api";
 const urlEpisodes = `${urlBase}/episode`;
 
@@ -20,4 +15,9 @@ export async function getSingleEpisodes(url:string): Promise<Episodes> {
     return data;
 }
 
+export async function getSingleCharacter(url:string): Promise<Character> {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+}
 

@@ -23,4 +23,11 @@ export function getSingleEpisodes(url) {
         return data;
     });
 }
+export function getSingleCharacter(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield fetch(url);
+        const data = yield response.json();
+        return data;
+    });
+}
 //# sourceMappingURL=API.js.map

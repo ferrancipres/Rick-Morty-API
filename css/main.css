@@ -23,17 +23,77 @@
     margin-bottom: 10px;
 }
 
-.content-main {
+.containerDisplay {
     background-image: linear-gradient(180deg, rgb(33,37,41), rgb(62, 230, 59));
-    min-height: 100vh;
-    padding: 20px;
+    min-height: fit-content;
     width: 100%;
 }
 
-.green-letter {
+.containerEpisodes {
+    background-image: linear-gradient(180deg, rgb(33,37,41), rgb(62, 230, 59));
+    min-height: fit-content;
+    width: 100%;
+}
+
+.letter {
     color: rgb(80, 250, 83);
 }
 
 .displayNone {
     display: none !important;
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+    background-color: black;
+    color:rgb(62, 230, 59)!important;
+}
+
+.basic-container {
+    margin-left: 30px;
+    margin-top: 70px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.basic-subcontainer {
+    margin-left: 30px;
+    margin-top: 10px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container-letter {
+    margin-left: 30px;
+    margin-top: 70px;
+    height: 400px;
+    width: 100%;
+}
+
+.outline {
+    display: inline-block;
+    margin: 30px;
+}
+
+.title-episode {
+    font-size: 30px;
+    color: white;
+}
+
+.title-episode:hover {
+    color:rgb(62, 230, 59);
+}
+
+.subtitle-episode {
+    font-size: 20px;
+    color: white;
 }
