@@ -7,35 +7,38 @@
     padding: 0;
    }
 
-.header_title {
-    display: flex;
-    justify-content: center;
+body {
+    font-family: 'Nanum Pen Script', cursive!important;
+}
+
+.header-img {
+    width: 15rem;
+}
+
+.container-background-list-episodes {
+    background-image: linear-gradient(180deg, rgb(33,37,41), rgb(62, 230, 59));
+}
+
+.btn-load-more {
+    color: white!important;
+}
+
+.btn-load-more:hover {
+    color: rgb(80, 250, 83)!important;
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
     background-color: rgb(33,37,41);
+    color:rgb(62, 230, 59)!important;
 }
 
-.header-box {
-    height: 25px;
-}
-
-.img_title {
-    width: 300px;
-    margin-bottom: 10px;
-}
-
+/* VOY X AQUI */
 .containerDisplay {
-    background-image: linear-gradient(180deg, rgb(33,37,41), rgb(62, 230, 59));
+    background-image: linear-gradient(rgb(33,37,41), rgb(62, 230, 59));
     min-height: fit-content;
     width: 100%;
-}
-
-.containerEpisodes {
-    background-image: linear-gradient(180deg, rgb(33,37,41), rgb(62, 230, 59));
-    min-height: fit-content;
-    width: 100%;
-}
-
-.letter {
-    color: rgb(80, 250, 83);
 }
 
 .letter_background {
@@ -45,13 +48,6 @@
 
 .displayNone {
     display: none !important;
-}
-
-.nav-link:active,
-.nav-link:focus,
-.nav-link:hover {
-    background-color: black;
-    color:rgb(62, 230, 59)!important;
 }
 
 .basic-container {
@@ -118,15 +114,4 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.flexeo {
-    display: flex;
-    flex-direction: row;
-}
-
-@media screen and (max-width: 750px) {
-    .flexeo {
-        display: flex;
-        flex-direction: column;
-    }
 }

@@ -18,65 +18,59 @@
     <script type="module" src="../dist/index.js"></script>  
   </head>
 
-  <!-- Body -->
   <body>
-    <!-- Header -->
-    <header>
-        <!-- Falta imagen -->
-        <div class="header_title">
-          <img class="img_title sticky-top" src="/assets/img/title2.png" alt="title">
+    <header class="p-3 bg-dark">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+          <a href="http://127.0.0.1:5500/src/index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
+            <img class="header-img" src="/assets/img/rickandmorty_title.png" alt="rickandmorty_title">
+          </a>
         </div>
+      </div> 
     </header>
 
-    <!-- Main -->
     <main>
-      <!-- section principal -->
-      <section class="flexeo">
-          <!-- contenedor aside -->
-          
-          <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark size">
-            <span class="fs-4 letter">List of episodes</span>
+      <section>
+        <div class="d-flex flex-lg-row flex-md-column justify-content-center">
+          <div class="d-flex flex-column flex-shrink-0 text-bg-dark size">
+            <span class="fs-2 ms-4">List of episodes</span>
             <hr>
-            <ul id="containerEpisodes" class="containerEpisodes">
+            <ul id="containerListEpisodes" class="flex-shrink-0 text-md-dark size container-background-list-episodes">
             <!-- li class="nav-item" -->
             </ul>
-            <div id="btnLoadMore" class="d-grid gap-2">
-              <button class="btn letter_background" type="button">Load More</button>
+            <div id="btnLoadMore" class="d-grid gap-7">
+              <button class="btn btn-load-more fs-3"type="button">Load More</button>
             </div>
           </div>
           <!-- contenedor display -->
           <div class="containerDisplay" id="containerDisplay">
             <!-- Personajes -->
           </div>
-          <!-- MODAL-->
-          <!-- Button trigger modal 
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#characterModal">Launch demo modal</button>-->
+        </div>        
+      </section>
 
-          <!-- Modal -->
-          <div class="modal fade" id="characterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="characterModalLabel"> Character Details</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-                </div>  
-                <div class="modal-body" id="characterModalBody">
-                <!-- Character Details -->
-                </div>
-                <div class="modal-list-episodes " id="characterModalListEpisodes">
-                  <h5 class="modal-title ms-3" id="characterModalLabel"> List of Episodes</h5>
-                  <hr>
-                  <ul id="containerListEpisodes" class="">
-                  <!-- List of episodes --> 
-                  </ul>
-                  
-                </div>
+      <section>
+        <div class="modal fade" id="characterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="characterModalLabel"> Character Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+              </div>  
+              <div class="modal-body" id="characterModalBody">
+              <!-- Character Details -->
+              </div>
+              <div class="modal-list-episodes " id="characterModalListEpisodes">
+                <h5 class="modal-title ms-3" id="characterModalLabel"> List of Episodes</h5>
+                <hr>
+                <ul id="containerEpisodes">
+                <!-- List of episodes --> 
+                </ul>
               </div>
             </div>
           </div>
+        </div>
       </section>
-  </body>
 
-  <!-- Footer -->
-  <footer></footer>
+  </body>
 </html>

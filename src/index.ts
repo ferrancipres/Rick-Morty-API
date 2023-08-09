@@ -1,6 +1,6 @@
 import { getEpisodes, getSingleEpisodes,getSingleCharacter} from "./utils/API.js";
 window.addEventListener("load", init);
-const episodeList = document.querySelector("#containerEpisodes");
+const episodeList = document.querySelector("#containerListEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
 
 export async function init() {   
@@ -15,7 +15,7 @@ async function getAllEpisodes(countPage:number) {
     });
 }
 
-//PENDIENTE
+//PENDIENTE DESAPARECER EL BOTON ??
 const btnLoadMore = document.querySelector("#btnLoadMore");
 btnLoadMore!.addEventListener("click", () => {
     if(countPage === 3) alert("pendiente eliminar");
@@ -34,7 +34,7 @@ function createEpisodeLink(episode:Episodes) {
     linkEpisodes.classList.add("nav-link")
     linkEpisodes.id = episode.id;  // asignar un "id"
 
-    const titleEpisode = document.createElement("h6");
+    const titleEpisode = document.createElement("h5");
     titleEpisode.innerText = `${episode.episode} - ${episode.name}`;
 
     // Contenedor "hr"
@@ -181,13 +181,11 @@ async function showModal(char:Character) {
     modalListEpisodes!.classList.add("list-unstyled");
 
     const TEST = char.episode;
-    //console.log(char.episode);  // Array de string**
     TEST.forEach(async element => { // para separar Array
         const PRUEBA = await getEpisodesTitle(element);
         const PRUEBA2 = await getEpisodesCode(element); 
 
-        const containerEpisodes = document.querySelector('#containerListEpisodes');
-        //containerEpisodes?.replaceChildren(); // vaciarlo
+        const containerListEpisodes = document.querySelector('#containerEpisodes');
         const LALALA = document.createElement('li');
         LALALA.textContent = PRUEBA; 
         LALALA.setAttribute("data-bs-dismiss", "modal");
@@ -195,7 +193,7 @@ async function showModal(char:Character) {
             showEpisodeContent(element);
         });
 
-        containerEpisodes?.appendChild(LALALA);
+        containerListEpisodes!.appendChild(LALALA);
         //modalListEpisodes(PRUEBA, PRUEBA2);
     });
 }

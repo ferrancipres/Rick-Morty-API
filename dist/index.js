@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { getEpisodes, getSingleEpisodes, getSingleCharacter } from "./utils/API.js";
 window.addEventListener("load", init);
-const episodeList = document.querySelector("#containerEpisodes");
+const episodeList = document.querySelector("#containerListEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
 export function init() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -41,7 +41,7 @@ function createEpisodeLink(episode) {
     const linkEpisodes = document.createElement("a");
     linkEpisodes.classList.add("nav-link");
     linkEpisodes.id = episode.id;
-    const titleEpisode = document.createElement("h6");
+    const titleEpisode = document.createElement("h5");
     titleEpisode.innerText = `${episode.episode} - ${episode.name}`;
     const spaceEpisode = document.createElement("hr");
     spaceEpisode.style.width = "30vw";
@@ -153,14 +153,14 @@ function showModal(char) {
         TEST.forEach((element) => __awaiter(this, void 0, void 0, function* () {
             const PRUEBA = yield getEpisodesTitle(element);
             const PRUEBA2 = yield getEpisodesCode(element);
-            const containerEpisodes = document.querySelector('#containerListEpisodes');
+            const containerListEpisodes = document.querySelector('#containerEpisodes');
             const LALALA = document.createElement('li');
             LALALA.textContent = PRUEBA;
             LALALA.setAttribute("data-bs-dismiss", "modal");
             LALALA.addEventListener("click", () => {
                 showEpisodeContent(element);
             });
-            containerEpisodes === null || containerEpisodes === void 0 ? void 0 : containerEpisodes.appendChild(LALALA);
+            containerListEpisodes.appendChild(LALALA);
         }));
     });
 }
