@@ -9,14 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { getEpisodes, getSingleEpisodes, getSingleCharacter, getLocation } from "./utils/API.js";
 window.addEventListener("load", init);
+let countPage = 1;
 const episodeList = document.querySelector("#containerListEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
+const btnLoadMore = document.querySelector("#btnLoadMore");
 export function init() {
     return __awaiter(this, void 0, void 0, function* () {
         getAllEpisodes(countPage);
     });
 }
-let countPage = 1;
 function getAllEpisodes(countPage) {
     return __awaiter(this, void 0, void 0, function* () {
         const episodes = yield getEpisodes(countPage);
@@ -25,7 +26,6 @@ function getAllEpisodes(countPage) {
         });
     });
 }
-const btnLoadMore = document.querySelector("#btnLoadMore");
 btnLoadMore.addEventListener("click", () => {
     countPage++;
     getAllEpisodes(countPage);
@@ -195,8 +195,6 @@ function showLocation(url) {
         episodeResidents.classList.add("description-episode");
         episodeDimensionType.innerText = "Residents: ";
         containerLocationDescription.appendChild(episodeDimensionType);
-        const spaceEpisode = document.createElement("hr");
-        containerLocationDescription.appendChild(spaceEpisode);
         const locationResidents = locateInformation.residents;
         locationResidents.forEach((resident) => {
             const urlResident = resident;
