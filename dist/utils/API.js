@@ -13,23 +13,38 @@ const urlCharacters = `${urlBase}/character`;
 const urlLocation = `${urlBase}/location`;
 export function getEpisodes(countPage) {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(urlEpisodes + `?page=${countPage}`);
-        const data = yield response.json();
-        return data.results;
+        try {
+            const response = yield fetch(urlEpisodes + `?page=${countPage}`);
+            const data = yield response.json();
+            return data.results;
+        }
+        catch (error) {
+            throw new Error("Something went wrong");
+        }
     });
 }
 export function getSingleEpisodes(url) {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(url);
-        const data = yield response.json();
-        return data;
+        try {
+            const response = yield fetch(url);
+            const data = yield response.json();
+            return data;
+        }
+        catch (error) {
+            throw new Error("Something went wront");
+        }
     });
 }
 export function getSingleCharacter(url) {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(url);
-        const data = yield response.json();
-        return data;
+        try {
+            const response = yield fetch(url);
+            const data = yield response.json();
+            return data;
+        }
+        catch (error) {
+            throw new Error("Something went wront");
+        }
     });
 }
 //# sourceMappingURL=API.js.map

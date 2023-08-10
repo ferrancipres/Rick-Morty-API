@@ -15,6 +15,13 @@ body {
     width: 15rem;
 }
 
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+    background-color: rgb(33,37,41);
+    color:rgb(62, 230, 59)!important;
+}
+
 .container-background-list-episodes {
     background-image: linear-gradient(180deg, rgb(33,37,41), rgb(62, 230, 59));
 }
@@ -27,49 +34,85 @@ body {
     color: rgb(80, 250, 83)!important;
 }
 
-.nav-link:active,
-.nav-link:focus,
-.nav-link:hover {
-    background-color: rgb(33,37,41);
-    color:rgb(62, 230, 59)!important;
+.display {
+    display: none!important;
 }
 
+.bounce-effect {
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.bounce-effect:hover {
+    transform: scale(1.04);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
 /* VOY X AQUI */
-.containerDisplay {
+
+.container-display {
     background-image: linear-gradient(rgb(33,37,41), rgb(62, 230, 59));
     min-height: fit-content;
     width: 100%;
 }
 
-.letter_background {
-    background-color: rgb(80, 250, 83)!important;
-    color: white;
-}
-
-.displayNone {
-    display: none !important;
-}
-
-.basic-container {
+.container-title {
     margin-left: 30px;
     margin-top: 70px;
     height: 40px;
-    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content:flex-start;
 }
 
-.basic-subcontainer {
+.title-episode {
+    font-size: 40px;
+    color: white;
+}
+
+.container-description {
     margin-left: 30px;
     margin-top: 10px;
+    margin-bottom: 10px;
     height: 40px;
-    width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+}
+
+.description-episode {
+    font-size: 25px;
+    color: white;
+}
+
+.display-card {
+    display: inline-block;
+    justify-content: center;
+    margin: 30px;
+    height: fit-content;
+    background-color: white;
+}
+
+.display-card-information {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+}
+
+.card-style {
+    width: 20em;
+    height: 20em;
+}
+
+.modalContentDescription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-letter {
@@ -79,39 +122,8 @@ body {
     width: 100%;
 }
 
-.outline {
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    margin: 30px;
-    background-color: white;
-    height: 400px;
-}
-
-.title-episode {
-    font-size: 30px;
-    color: white;
-}
-
-.title-episode:hover {
-    color:rgb(62, 230, 59);
-}
-
-.subtitle-episode {
-    font-size: 20px;
-    color: white;
-}
-
-.extra {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.modalContentDescription {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+@media (max-width: 576px) {
+    .flex-sm-column {
+        flex-direction: column!important;
+    }
 }

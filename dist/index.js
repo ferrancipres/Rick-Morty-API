@@ -27,28 +27,26 @@ function getAllEpisodes(countPage) {
 }
 const btnLoadMore = document.querySelector("#btnLoadMore");
 btnLoadMore.addEventListener("click", () => {
-    if (countPage === 3)
-        alert("pendiente eliminar");
-    else {
-        countPage++;
-        getAllEpisodes(countPage);
+    countPage++;
+    getAllEpisodes(countPage);
+    console.log(countPage);
+    if (countPage === 3) {
+        btnLoadMore.classList.add("display");
     }
 });
 function createEpisodeLink(episode) {
     const containerList = document.createElement("li");
     containerList.className = "nav-item nav-link";
-    containerList.id = "containerList";
+    containerList.classList.add("cursor-pointer", "bounce-effect");
     const linkEpisodes = document.createElement("a");
     linkEpisodes.classList.add("nav-link");
-    linkEpisodes.id = episode.id;
+    containerList.appendChild(linkEpisodes);
     const titleEpisode = document.createElement("h5");
     titleEpisode.innerText = `${episode.episode} - ${episode.name}`;
-    const spaceEpisode = document.createElement("hr");
-    spaceEpisode.style.width = "30vw";
-    containerList.appendChild(linkEpisodes);
     linkEpisodes.appendChild(titleEpisode);
-    episodeList.appendChild(containerList);
+    const spaceEpisode = document.createElement("hr");
     episodeList.appendChild(spaceEpisode);
+    episodeList.appendChild(containerList);
     const urlEpisode = episode.url;
     containerList.addEventListener("click", () => {
         showEpisodeContent(urlEpisode);
@@ -59,23 +57,23 @@ function showEpisodeContent(url) {
         containerDisplay.replaceChildren();
         const episode = yield getSingleEpisodes(url);
         const containerTitle = document.createElement("div");
-        containerTitle.classList.add("basic-container");
+        containerTitle.classList.add("container-title");
         const episodeTitle = document.createElement("h3");
         episodeTitle.classList.add("title-episode");
         episodeTitle.innerText = episode.name;
-        const containerSubTitle = document.createElement("div");
-        containerSubTitle.classList.add("basic-subcontainer");
-        const airDateEpisode = document.createElement("h4");
-        airDateEpisode.classList.add("subtitle-episode");
-        airDateEpisode.innerText = episode.air_date;
-        const codeEpisode = document.createElement("h4");
-        codeEpisode.classList.add("subtitle-episode");
-        codeEpisode.innerText = episode.episode;
-        containerDisplay === null || containerDisplay === void 0 ? void 0 : containerDisplay.appendChild(containerTitle);
         containerTitle.appendChild(episodeTitle);
-        containerDisplay === null || containerDisplay === void 0 ? void 0 : containerDisplay.appendChild(containerSubTitle);
-        containerSubTitle.appendChild(airDateEpisode);
-        containerSubTitle.appendChild(codeEpisode);
+        const containerDescription = document.createElement("div");
+        containerDescription.classList.add("container-description");
+        const airDateEpisode = document.createElement("h3");
+        airDateEpisode.classList.add("description-episode");
+        airDateEpisode.innerText = `Air-date: ${episode.air_date}`;
+        containerDescription.appendChild(airDateEpisode);
+        const codeEpisode = document.createElement("h3");
+        codeEpisode.classList.add("description-episode");
+        codeEpisode.innerText = `Episode: ${episode.episode}`;
+        containerDescription.appendChild(codeEpisode);
+        containerDisplay.appendChild(containerTitle);
+        containerDisplay === null || containerDisplay === void 0 ? void 0 : containerDisplay.appendChild(containerDescription);
         const characters = episode.characters;
         characters.forEach((charUrl) => {
             const url = charUrl.toString();
@@ -87,36 +85,34 @@ function createCardCharacter(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const char = yield getSingleCharacter(url);
         const containerCharacter = document.createElement("div");
-        containerCharacter.classList.add("outline");
+        containerCharacter.classList.add("display-card");
+        containerCharacter.classList.add("bounce-effect");
         const containerCharacterSingle = document.createElement("div");
-        containerCharacterSingle.classList.add("extra");
-        const miputaMadre = document.createElement("img");
-        miputaMadre.classList.add("card-img-top");
-        miputaMadre.src = char.image;
-        miputaMadre.alt = `${char.name} Image`;
-        const miputoPadre = document.createElement("h6");
-        miputoPadre.classList.add("letter");
-        miputoPadre.innerText = char.name;
-        const statusCharacter = document.createElement("h6");
+        containerCharacterSingle.classList.add("display-card-information");
+        const imgagenCharacter = document.createElement("img");
+        imgagenCharacter.classList.add("card-img-top");
+        imgagenCharacter.src = char.image;
+        imgagenCharacter.alt = `${char.name} Image`;
+        const nameCharacter = document.createElement("h5");
+        nameCharacter.innerText = char.name;
+        containerCharacterSingle.appendChild(nameCharacter);
+        const statusCharacter = document.createElement("h5");
         statusCharacter.textContent = `Status: ${char.status}`;
-        const specieCharacter = document.createElement("h6");
+        containerCharacterSingle.appendChild(statusCharacter);
+        const specieCharacter = document.createElement("h5");
         specieCharacter.textContent = `Species: ${char.species}`;
+        containerCharacterSingle.appendChild(specieCharacter);
         const card = document.createElement("button");
-        card.classList.add("card");
-        card.style.width = "20em";
-        card.style.height = "20em";
+        card.classList.add("card", "card-style");
         card.setAttribute("data-bs-toggle", "modal");
         card.setAttribute("data-bs-target", "#characterModal");
         card.addEventListener("click", () => {
             showModal(char);
         });
-        card.appendChild(miputaMadre);
-        containerCharacterSingle.appendChild(miputoPadre);
-        containerCharacterSingle.appendChild(statusCharacter);
-        containerCharacterSingle.appendChild(specieCharacter);
+        card.appendChild(imgagenCharacter);
         containerCharacter.appendChild(card);
         containerCharacter.appendChild(containerCharacterSingle);
-        containerDisplay === null || containerDisplay === void 0 ? void 0 : containerDisplay.appendChild(containerCharacter);
+        containerDisplay.appendChild(containerCharacter);
     });
 }
 function showModal(char) {

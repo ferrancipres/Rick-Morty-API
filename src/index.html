@@ -31,19 +31,19 @@
 
     <main>
       <section>
-        <div class="d-flex flex-lg-row flex-md-column justify-content-center">
+        <div class="d-flex flex-lg-row flex-md-row flex-sm-column">  <!-- AQUI HAY UN PROBLEMA CON EL TAMAÑO MOVIL // @media querie ?? display: flex - column (1)-->
           <div class="d-flex flex-column flex-shrink-0 text-bg-dark size">
             <span class="fs-2 ms-4">List of episodes</span>
             <hr>
             <ul id="containerListEpisodes" class="flex-shrink-0 text-md-dark size container-background-list-episodes">
             <!-- li class="nav-item" -->
             </ul>
-            <div id="btnLoadMore" class="d-grid gap-7">
-              <button class="btn btn-load-more fs-3"type="button">Load More</button>
+            <div class="d-grid gap-7">
+              <button id="btnLoadMore" class="btn btn-load-more fs-3" type="button">Load More</button>
             </div>
           </div>
           <!-- contenedor display -->
-          <div class="containerDisplay" id="containerDisplay">
+          <div class="container-display" id="containerDisplay">
             <!-- Personajes -->
           </div>
         </div>        

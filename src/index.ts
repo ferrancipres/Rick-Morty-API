@@ -1,4 +1,5 @@
 import { getEpisodes, getSingleEpisodes,getSingleCharacter} from "./utils/API.js";
+
 window.addEventListener("load", init);
 const episodeList = document.querySelector("#containerListEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
@@ -15,39 +16,36 @@ async function getAllEpisodes(countPage:number) {
     });
 }
 
-//PENDIENTE DESAPARECER EL BOTON ??
 const btnLoadMore = document.querySelector("#btnLoadMore");
 btnLoadMore!.addEventListener("click", () => {
-    if(countPage === 3) alert("pendiente eliminar");
-    else {
-        countPage++;
-        getAllEpisodes(countPage);
-    }
+    countPage++;
+    getAllEpisodes(countPage);
+    console.log(countPage);
+    if(countPage === 3) {
+        btnLoadMore!.classList.add("display");
+    } 
 });
 
 function createEpisodeLink(episode:Episodes) {
     const containerList = document.createElement("li");
     containerList.className = "nav-item nav-link";
-    containerList.id = "containerList" 
+    containerList.classList.add("cursor-pointer", "bounce-effect");
+   //containerList.id = "containerList";
 
     const linkEpisodes = document.createElement("a");
     linkEpisodes.classList.add("nav-link")
-    linkEpisodes.id = episode.id;  // asignar un "id"
+    containerList.appendChild(linkEpisodes);
+    //linkEpisodes.id = episode.id;
 
     const titleEpisode = document.createElement("h5");
     titleEpisode.innerText = `${episode.episode} - ${episode.name}`;
-
-    // Contenedor "hr"
-    const spaceEpisode = document.createElement("hr");
-    spaceEpisode.style.width = "30vw";
-
-    //Asamblar todo dentro del "li"
-    containerList.appendChild(linkEpisodes);
     linkEpisodes.appendChild(titleEpisode);
-        
-    // Assamblar todo en episodeList
-    episodeList!.appendChild(containerList); 
+
+    const spaceEpisode = document.createElement("hr");
     episodeList!.appendChild(spaceEpisode); 
+    //spaceEpisode.style.width = "30vw";
+   
+    episodeList!.appendChild(containerList); 
 
     const urlEpisode = episode.url;
     containerList.addEventListener("click", () => {
@@ -58,39 +56,34 @@ function createEpisodeLink(episode:Episodes) {
 
 async function showEpisodeContent(url:string) {
     containerDisplay!.replaceChildren();
-
     const episode = await getSingleEpisodes(url);
     
-    //div Title
     const containerTitle = document.createElement("div");
-    containerTitle.classList.add("basic-container");
+    containerTitle.classList.add("container-title");
+
     const episodeTitle = document.createElement("h3");
     episodeTitle.classList.add("title-episode");
     episodeTitle.innerText = episode.name;
-
-    const containerSubTitle = document.createElement("div");
-    containerSubTitle.classList.add("basic-subcontainer");
-
-    const airDateEpisode = document.createElement("h4");
-    airDateEpisode.classList.add("subtitle-episode");
-    airDateEpisode.innerText = episode.air_date;
-
-    const codeEpisode = document.createElement("h4");
-    codeEpisode.classList.add("subtitle-episode");
-    codeEpisode.innerText = episode.episode;
-
-    //Ensamblaje
-    containerDisplay?.appendChild(containerTitle);
     containerTitle.appendChild(episodeTitle);
 
-    containerDisplay?.appendChild(containerSubTitle);
-    containerSubTitle.appendChild(airDateEpisode);
-    containerSubTitle.appendChild(codeEpisode);
-    
-    // Crear constante characters
+    const containerDescription = document.createElement("div");
+    containerDescription.classList.add("container-description");
+
+    const airDateEpisode = document.createElement("h3");
+    airDateEpisode.classList.add("description-episode");
+    airDateEpisode.innerText = `Air-date: ${episode.air_date}`;
+    containerDescription.appendChild(airDateEpisode);
+
+    const codeEpisode = document.createElement("h3");
+    codeEpisode.classList.add("description-episode");
+    codeEpisode.innerText = `Episode: ${episode.episode}`;
+    containerDescription.appendChild(codeEpisode);
+
+    containerDisplay!.appendChild(containerTitle);
+    containerDisplay?.appendChild(containerDescription);
+
     const characters = episode.characters;
     characters.forEach ((charUrl) => {
-        // No entiendo esta linea
         const url = charUrl.toString();
         createCardCharacter(url);
     }); 
@@ -100,44 +93,44 @@ async function createCardCharacter(url:string) {
     const char = await getSingleCharacter(url);
 
     const containerCharacter = document.createElement("div");
-    containerCharacter.classList.add("outline");
+    containerCharacter.classList.add("display-card");
+    containerCharacter.classList.add("bounce-effect");
 
     const containerCharacterSingle = document.createElement("div");
-    containerCharacterSingle.classList.add("extra");
+    containerCharacterSingle.classList.add("display-card-information");
 
-    const miputaMadre = document.createElement("img");
-    miputaMadre.classList.add("card-img-top");
-    miputaMadre.src = char.image;
-    miputaMadre.alt = `${char.name} Image`;
+    const imgagenCharacter = document.createElement("img");
+    imgagenCharacter.classList.add("card-img-top");
+    imgagenCharacter.src = char.image;
+    imgagenCharacter.alt = `${char.name} Image`;
 
-    const miputoPadre = document.createElement("h6");
-    miputoPadre.classList.add("letter");
-    miputoPadre.innerText = char.name;
+    const nameCharacter = document.createElement("h5");
+    nameCharacter.innerText = char.name;
+    containerCharacterSingle.appendChild(nameCharacter);
 
-    const statusCharacter = document.createElement("h6");
+    const statusCharacter = document.createElement("h5");
     statusCharacter.textContent = `Status: ${char.status}`;
+    containerCharacterSingle.appendChild(statusCharacter);
 
-    const specieCharacter = document.createElement("h6");
+    const specieCharacter = document.createElement("h5");
     specieCharacter.textContent = `Species: ${char.species}`;
+    containerCharacterSingle.appendChild(specieCharacter);
 
     const card = document.createElement("button");
-    card.classList.add("card");
-    card.style.width = "20em";
-    card.style.height= "20em";
+    card.classList.add("card", "card-style");
     card.setAttribute("data-bs-toggle", "modal");
     card.setAttribute("data-bs-target", "#characterModal");
     card.addEventListener("click", () => {
         showModal(char)
     });
 
-    card.appendChild(miputaMadre);
-    containerCharacterSingle.appendChild(miputoPadre);
-    containerCharacterSingle.appendChild(statusCharacter);
-    containerCharacterSingle.appendChild(specieCharacter);
+    card.appendChild(imgagenCharacter);
     containerCharacter.appendChild(card);
     containerCharacter.appendChild(containerCharacterSingle);
-    containerDisplay?.appendChild(containerCharacter);
+    containerDisplay!.appendChild(containerCharacter);
 }
+
+// VOY X AQUI
 
 async function showModal(char:Character) {
     const modalBody = document.querySelector("#characterModalBody");
