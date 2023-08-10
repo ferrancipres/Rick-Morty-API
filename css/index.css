@@ -16,7 +16,7 @@ body {
 }
 
 .header-img-dab {
-    width: 10rem;
+    width: 8rem;
 }
 
 .nav-link:active,
@@ -151,8 +151,6 @@ body {
     justify-content: center;
 }
 
-.gif {
-}
 
 @media (max-width: 576px) {
     .flex-sm-column {

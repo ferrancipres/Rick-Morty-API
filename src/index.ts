@@ -1,14 +1,15 @@
 import { getEpisodes, getSingleEpisodes,getSingleCharacter, getLocation} from "./utils/API.js";
 
 window.addEventListener("load", init);
+let countPage = 1;
 const episodeList = document.querySelector("#containerListEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
+const btnLoadMore = document.querySelector("#btnLoadMore");
 
 export async function init() {   
     getAllEpisodes(countPage);
 }
 
-let countPage = 1;
 async function getAllEpisodes(countPage:number) {
     const episodes = await getEpisodes(countPage);
     episodes.forEach ((episode) => {
@@ -16,7 +17,6 @@ async function getAllEpisodes(countPage:number) {
     });
 }
 
-const btnLoadMore = document.querySelector("#btnLoadMore");
 btnLoadMore!.addEventListener("click", () => {
     countPage++;
     getAllEpisodes(countPage);
@@ -219,6 +219,11 @@ async function showLocation(url:string) {
     const episodeDimensionType = document.createElement("h3");
     episodeDimensionType.classList.add("description-episode");
     episodeDimensionType.innerText = `Episode: ${locateInformation.type}`;
+    containerLocationDescription.appendChild(episodeDimensionType);
+
+    const episodeResidents = document.createElement("h3");
+    episodeResidents.classList.add("description-episode");
+    episodeDimensionType.innerText = "Residents: ";
     containerLocationDescription.appendChild(episodeDimensionType);
 
     const locationResidents = locateInformation.residents;

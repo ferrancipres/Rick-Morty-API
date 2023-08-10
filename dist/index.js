@@ -191,6 +191,12 @@ function showLocation(url) {
         episodeDimensionType.classList.add("description-episode");
         episodeDimensionType.innerText = `Episode: ${locateInformation.type}`;
         containerLocationDescription.appendChild(episodeDimensionType);
+        const episodeResidents = document.createElement("h3");
+        episodeResidents.classList.add("description-episode");
+        episodeDimensionType.innerText = "Residents: ";
+        containerLocationDescription.appendChild(episodeDimensionType);
+        const spaceEpisode = document.createElement("hr");
+        containerLocationDescription.appendChild(spaceEpisode);
         const locationResidents = locateInformation.residents;
         locationResidents.forEach((resident) => {
             const urlResident = resident;
