@@ -29,7 +29,7 @@ body {
 .nav-link:focus,
 .nav-link:hover {
     background-color: var(--backgroundsecundary-clr);
-    color:var(--backgroundprimary-clr)!important;
+    color: var(--backgroundprimary-clr)!important;
 }
 
 .container-background-list-episodes {
@@ -68,37 +68,37 @@ body {
 }
 
 .container-title {
-    margin-left: 30px;
-    margin-top: 70px;
-    height: 40px;
+    margin-left: 1.875em;
+    margin-top: 4.375em;
+    height: 2.5em;
     display: flex;
     justify-content:flex-start;
 }
 
 .title-episode {
-    font-size: 40px;
+    font-size: 2.5em;
     color: var(--backgroundcolorletter-clr);
 }
 
 .container-description {
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 40px;
+    margin-left: 1.875em;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+    height: 2.5em;
     display: flex;
     flex-direction: column;
     justify-content:flex-start;
 }
 
 .description-episode {
-    font-size: 25px;
+    font-size: 1.5625em;
     color: var(--backgroundcolorletter-clr);
 }
 
 .display-card {
     display: inline-block;
     justify-content: center;
-    margin: 30px;
+    margin: 1.875em;
     height: fit-content;
     background-color: var(--backgroundcolorletter-clr);
 }
@@ -116,7 +116,7 @@ body {
 }
 
 .p-style {
-    font-size: 25px;
+    font-size: 1.5625em;
 }
 
 .modal-content-description {
@@ -128,26 +128,26 @@ body {
 
 .list-episode-style {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25em;
     text-decoration: underline;
 }
 
 .list-episode-location-style {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25em;
     text-decoration: underline;
 }
 
 .list-episode-location-style:hover {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25em;
     text-decoration: underline;
     color:var(--backgroundprimary-clr);
 }
 
 .list-episode-style:hover {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25em;
     text-decoration: underline;
     color:rgb(62, 230, 59);
 }
@@ -160,12 +160,12 @@ body {
 .footer_bottom {
     background-color: rgb(33,37,41);
     text-align: center;
-    padding-top: 5px;
+    padding-top: 0.3125em;
 }
   
 .footer_bottom p {
-    font-size: 20px;
-    word-spacing: 2px;
+    font-size: 1.25em;
+    word-spacing: 0.125em;
     text-transform: capitalize;
     color: var(--backgroundcolorletter-clr);
 }
@@ -173,7 +173,7 @@ body {
 .footer_bottom span {
     text-transform: uppercase;
     opacity: .4;
-    font-weight: 200px;
+    font-weight: 12.5em;
 }
   
 .socials {
@@ -186,8 +186,8 @@ body {
 }
   
 .socials li {
-    margin: 0 10px;
-    font-size: 30px;
+    margin: 0 0.625em;
+    font-size: 1.875em;
 }
 
 .socials ul {
