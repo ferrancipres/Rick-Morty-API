@@ -42,7 +42,6 @@ function createEpisodeLink(episode:Episodes) {
 
     const spaceEpisode = document.createElement("hr");
     episodeList!.appendChild(spaceEpisode); 
-    //spaceEpisode.style.width = "30vw";
    
     episodeList!.appendChild(containerList); 
 

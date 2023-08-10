@@ -151,6 +151,56 @@ body {
     justify-content: center;
 }
 
+.footer_bottom {
+    background-color: rgb(33,37,41);
+    text-align: center;
+    padding-top: 5px;
+  }
+  
+  .footer_bottom p {
+    font-size: 20px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+    color: white;
+  }
+  
+  .footer_bottom span {
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200px;
+  }
+  
+  .socials {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    color: white;
+  }
+  
+  .socials li {
+    margin: 0 10px;
+    font-size: 30px;
+  }
+
+  .socials ul {
+    margin-bottom: 0;
+  }
+  
+  .socials a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .social a i {
+    font-size: 1.1 rem;
+    transition: color .4s ease;
+  }
+  
+  .socials a:hover {
+    color:rgb(62, 230, 59)
+  }
 
 @media (max-width: 576px) {
     .flex-sm-column {
