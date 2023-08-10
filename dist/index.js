@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { getEpisodes, getSingleEpisodes, getSingleCharacter } from "./utils/API.js";
+import { getEpisodes, getSingleEpisodes, getSingleCharacter, getLocation } from "./utils/API.js";
 window.addEventListener("load", init);
 const episodeList = document.querySelector("#containerListEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
@@ -40,6 +40,7 @@ function createEpisodeLink(episode) {
     containerList.classList.add("cursor-pointer", "bounce-effect");
     const linkEpisodes = document.createElement("a");
     linkEpisodes.classList.add("nav-link");
+    linkEpisodes.setAttribute("href", "#containerDisplay");
     containerList.appendChild(linkEpisodes);
     const titleEpisode = document.createElement("h5");
     titleEpisode.innerText = `${episode.episode} - ${episode.name}`;
@@ -122,42 +123,81 @@ function showModal(char) {
         const modalContent = document.createElement("div");
         modalContent.classList.add("modal-info");
         const modalContentDescription = document.createElement("div");
-        modalContentDescription.classList.add("modalContentDescription");
+        modalContentDescription.classList.add("modal-content-description");
         const characterImg = document.createElement("img");
         characterImg.src = char.image;
         characterImg.alt = char.name;
         characterImg.classList.add("img-fluid", "mb-3");
         modalContentDescription.appendChild(characterImg);
-        const characterName = document.createElement("h6");
+        const characterName = document.createElement("h4");
         characterName.classList.add("mb-2");
         characterName.textContent = char.name;
         modalContentDescription.appendChild(characterName);
-        const statusParagraph = document.createElement("p");
+        const statusParagraph = document.createElement("h5");
         statusParagraph.textContent = `Status: ${char.status}`;
         modalContentDescription.appendChild(statusParagraph);
-        const speciesParagraph = document.createElement("p");
+        const speciesParagraph = document.createElement("h5");
         speciesParagraph.textContent = `Species: ${char.species}`;
         modalContentDescription.appendChild(speciesParagraph);
-        const genderParagraph = document.createElement("p");
+        const genderParagraph = document.createElement("h5");
         genderParagraph.textContent = `Gender: ${char.gender}`;
         modalContentDescription.appendChild(genderParagraph);
+        const locationInformation = document.createElement("h5");
+        locationInformation.classList.add("list-episode-location-style");
+        locationInformation.textContent = `Location: ${char.location.name}`;
+        modalContentDescription.appendChild(locationInformation);
+        locationInformation.setAttribute("data-bs-dismiss", "modal");
+        locationInformation.addEventListener("click", () => {
+            const urlLocation = char.location.url;
+            showLocation(urlLocation);
+        });
         modalContent.appendChild(modalContentDescription);
         modalBody.appendChild(modalContent);
         const modalListEpisodes = document.querySelector("#characterModalListEpisodes");
         modalListEpisodes.classList.add("list-unstyled");
-        const TEST = char.episode;
-        TEST.forEach((element) => __awaiter(this, void 0, void 0, function* () {
-            const PRUEBA = yield getEpisodesTitle(element);
-            const PRUEBA2 = yield getEpisodesCode(element);
+        const CharEpisodeList = char.episode;
+        CharEpisodeList.forEach((element) => __awaiter(this, void 0, void 0, function* () {
+            const EpisodeListTitle = yield getEpisodesTitle(element);
+            const EpisodeListCode = yield getEpisodesCode(element);
             const containerListEpisodes = document.querySelector('#containerEpisodes');
-            const LALALA = document.createElement('li');
-            LALALA.textContent = PRUEBA;
-            LALALA.setAttribute("data-bs-dismiss", "modal");
-            LALALA.addEventListener("click", () => {
+            const elementListEpisode = document.createElement('li');
+            elementListEpisode.classList.add("list-episode-style");
+            elementListEpisode.textContent = `${EpisodeListCode} - ${EpisodeListTitle}`;
+            elementListEpisode.setAttribute("data-bs-dismiss", "modal");
+            elementListEpisode.addEventListener("click", () => {
                 showEpisodeContent(element);
             });
-            containerListEpisodes.appendChild(LALALA);
+            containerListEpisodes.appendChild(elementListEpisode);
         }));
+    });
+}
+function showLocation(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        containerDisplay.replaceChildren();
+        const locateInformation = yield getLocation(url);
+        const containerLocationTitle = document.createElement("div");
+        containerLocationTitle.classList.add("container-title");
+        const episodeTitleLocation = document.createElement("h3");
+        episodeTitleLocation.classList.add("title-episode");
+        episodeTitleLocation.innerText = locateInformation.name;
+        containerLocationTitle.appendChild(episodeTitleLocation);
+        const containerLocationDescription = document.createElement("div");
+        containerLocationDescription.classList.add("container-description");
+        const episodeDimensionLocation = document.createElement("h3");
+        episodeDimensionLocation.classList.add("description-episode");
+        episodeDimensionLocation.innerText = `Dimension: ${locateInformation.dimension}`;
+        containerLocationDescription.appendChild(episodeDimensionLocation);
+        const episodeDimensionType = document.createElement("h3");
+        episodeDimensionType.classList.add("description-episode");
+        episodeDimensionType.innerText = `Episode: ${locateInformation.type}`;
+        containerLocationDescription.appendChild(episodeDimensionType);
+        const locationResidents = locateInformation.residents;
+        locationResidents.forEach((resident) => {
+            const urlResident = resident;
+            createCardCharacter(urlResident);
+        });
+        containerDisplay.appendChild(containerLocationTitle);
+        containerDisplay.appendChild(containerLocationDescription);
     });
 }
 function getEpisodesTitle(element) {

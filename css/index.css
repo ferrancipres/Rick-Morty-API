@@ -15,6 +15,10 @@ body {
     width: 15rem;
 }
 
+.header-img-dab {
+    width: 10rem;
+}
+
 .nav-link:active,
 .nav-link:focus,
 .nav-link:hover {
@@ -50,9 +54,6 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
-
-
-/* VOY X AQUI */
 
 .container-display {
     background-image: linear-gradient(rgb(33,37,41), rgb(62, 230, 59));
@@ -108,22 +109,60 @@ body {
     height: 20em;
 }
 
-.modalContentDescription {
+.p-style {
+    font-size: 25px;
+}
+
+.modal-content-description {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.container-letter {
-    margin-left: 30px;
-    margin-top: 70px;
-    height: 400px;
-    width: 100%;
+.list-episode-style {
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.list-episode-location-style {
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.list-episode-location-style:hover {
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: underline;
+    color:rgb(62, 230, 59);
+}
+
+.list-episode-style:hover {
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: underline;
+    color:rgb(62, 230, 59);
+}
+
+.gif-container {
+    display: flex;
+    justify-content: center;
+}
+
+.gif {
 }
 
 @media (max-width: 576px) {
     .flex-sm-column {
         flex-direction: column!important;
     }
+
+    .gif-container {
+        display: flex;
+        justify-content: center;
+        display: none;
+    }
+    
 }

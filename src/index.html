@@ -23,15 +23,19 @@
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center">
           <a href="http://127.0.0.1:5500/src/index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
-            <img class="header-img" src="/assets/img/rickandmorty_title.png" alt="rickandmorty_title">
+            <div class="header_together">
+              <img class="header-img" src="/assets/img/rickandmorty_title.png" alt="rickandmorty-title">
+              <img class="header-img-dab" src="/assets/img/rickandmorty_dab.png" alt="rickandmorty-dab">
+            </div>
           </a>
         </div>
       </div> 
     </header>
 
     <main>
+
       <section>
-        <div class="d-flex flex-lg-row flex-md-row flex-sm-column">  <!-- AQUI HAY UN PROBLEMA CON EL TAMAÑO MOVIL // @media querie ?? display: flex - column (1)-->
+        <div class="d-flex flex-lg-row flex-md-row flex-sm-column">
           <div class="d-flex flex-column flex-shrink-0 text-bg-dark size">
             <span class="fs-2 ms-4">List of episodes</span>
             <hr>
@@ -44,6 +48,9 @@
           </div>
           <!-- contenedor display -->
           <div class="container-display" id="containerDisplay">
+            <div class="gif-container">
+              <img class="gif" src="/assets/img/giphy.gif" alt="portal">
+            </div>
             <!-- Personajes -->
           </div>
         </div>        
@@ -54,14 +61,14 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="characterModalLabel"> Character Details</h5>
+                <h5 class="modal-title fs-4" id="characterModalLabel"> Character Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
               </div>  
               <div class="modal-body" id="characterModalBody">
               <!-- Character Details -->
               </div>
               <div class="modal-list-episodes " id="characterModalListEpisodes">
-                <h5 class="modal-title ms-3" id="characterModalLabel"> List of Episodes</h5>
+                <h5 class="modal-title ms-3 fs-4" id="characterModalLabel"> List of Episodes</h5>
                 <hr>
                 <ul id="containerEpisodes">
                 <!-- List of episodes --> 

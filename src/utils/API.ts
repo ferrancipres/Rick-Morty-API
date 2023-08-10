@@ -32,3 +32,13 @@ export async function getSingleCharacter(url:string): Promise<Character> {
         throw new Error ("Something went wront")
     }
 }
+
+export async function getLocation(url:string): Promise<Location> {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw new Error ("Something went wront")
+    }
+}

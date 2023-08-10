@@ -47,4 +47,16 @@ export function getSingleCharacter(url) {
         }
     });
 }
+export function getLocation(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const response = yield fetch(url);
+            const data = yield response.json();
+            return data;
+        }
+        catch (error) {
+            throw new Error("Something went wront");
+        }
+    });
+}
 //# sourceMappingURL=API.js.map
