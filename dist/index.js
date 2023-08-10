@@ -8,11 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { getEpisodes, getSingleEpisodes, getSingleCharacter, getLocation } from "./utils/API.js";
-window.addEventListener("load", init);
-let countPage = 1;
 const episodeList = document.querySelector("#containerListEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
 const btnLoadMore = document.querySelector("#btnLoadMore");
+window.addEventListener("load", init);
+let countPage = 1;
 export function init() {
     return __awaiter(this, void 0, void 0, function* () {
         getAllEpisodes(countPage);

@@ -1,10 +1,11 @@
 import { getEpisodes, getSingleEpisodes,getSingleCharacter, getLocation} from "./utils/API.js";
 
-window.addEventListener("load", init);
-let countPage = 1;
 const episodeList = document.querySelector("#containerListEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
 const btnLoadMore = document.querySelector("#btnLoadMore");
+
+window.addEventListener("load", init);
+let countPage = 1;
 
 export async function init() {   
     getAllEpisodes(countPage);
@@ -49,7 +50,6 @@ function createEpisodeLink(episode:Episodes) {
     containerList.addEventListener("click", () => {
         showEpisodeContent(urlEpisode);
     })
-
 }
 
 async function showEpisodeContent(url:string) {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang=“en”>
+  
 <head>
     <meta charset="utf-8">
     <meta name="description" content=“Rick&Morty” />
@@ -33,9 +34,9 @@
     </header>
 
     <main>
-      <section>
+      <aside>
         <div class="d-flex flex-lg-row flex-md-row flex-sm-column">
-          <div class="d-flex flex-column flex-shrink-0 text-bg-dark size">
+          <div class="d-flex flex-column text-bg-dark size">
             <span class="fs-2 ms-4">List of episodes</span>
             <hr>
             <ul id="containerListEpisodes" class="flex-shrink-0 text-md-dark size container-background-list-episodes">
@@ -45,15 +46,15 @@
               <button id="btnLoadMore" class="btn btn-load-more fs-3" type="button">Load More</button>
             </div>
           </div>
-          <!-- Container Display -->
+
           <div class="container-display" id="containerDisplay">
             <div class="gif-container">
               <img class="gif" src="/assets/img/worm-hole.gif" alt="worm-hole">
             </div>
-            <!-- Characters -->
+            <!-- Display of characters -->
           </div>
         </div>        
-      </section>
+      </aside>
 
       <section>
         <div class="modal fade" id="characterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,7 +65,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
               </div>  
               <div class="modal-body" id="characterModalBody">
-              <!-- Character Details -->
+              <!-- Character details -->
               </div>
               <div class="modal-list-episodes " id="characterModalListEpisodes">
                 <h5 class="modal-title ms-3 fs-4" id="characterModalLabel"> List of Episodes</h5>
@@ -78,6 +79,7 @@
         </div>
       </section>
   </body>
+
   <footer>
     <div class="footer_bottom">
       <p>Copyright &copy;2023 Assember Institute. designed by <span>Ferran</span></p>
@@ -87,4 +89,5 @@
       </ul>
     </div>
   </footer>
+
 </html>
