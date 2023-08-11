@@ -1,4 +1,4 @@
-import { getEpisodes, getSingleEpisodes,getSingleCharacter, getLocation} from "./utils/API.js";
+import {getEpisodes, getSingleEpisodes,getSingleCharacter, getLocation} from "./utils/API.js";
 
 const episodeList = document.querySelector("#containerListEpisodes");
 const containerDisplay = document.querySelector("#containerDisplay");
@@ -33,8 +33,8 @@ function createEpisodeLink(episode:Episodes) {
     containerList.classList.add("cursor-pointer", "bounce-effect");
 
     const linkEpisodes = document.createElement("a");
-    linkEpisodes.classList.add("nav-link")
-    linkEpisodes.setAttribute("href", "#containerDisplay")
+    linkEpisodes.classList.add("nav-link");
+    linkEpisodes.setAttribute("href", "#containerDisplay");
     containerList.appendChild(linkEpisodes);
 
     const titleEpisode = document.createElement("h5");
@@ -119,7 +119,7 @@ async function createCardCharacter(url:string) {
     card.setAttribute("data-bs-toggle", "modal");
     card.setAttribute("data-bs-target", "#characterModal");
     card.addEventListener("click", () => {
-        showModal(char)
+        showModal(char);
     });
 
     card.appendChild(imgagenCharacter);
@@ -136,7 +136,7 @@ async function showModal(char:Character) {
     modalContent.classList.add("modal-info");
 
     const modalContentDescription = document.createElement("div");
-    modalContentDescription.classList.add("modal-content-description")
+    modalContentDescription.classList.add("modal-content-description");
 
     const characterImg = document.createElement("img");
     characterImg.src = char.image;
@@ -162,7 +162,7 @@ async function showModal(char:Character) {
     modalContentDescription.appendChild(genderParagraph);
 
     const locationInformation = document.createElement("h5");
-    locationInformation.classList.add("list-episode-location-style")
+    locationInformation.classList.add("list-episode-location-style");
     locationInformation.textContent = `Location: ${char.location.name}`;
     modalContentDescription.appendChild(locationInformation);
     locationInformation.setAttribute("data-bs-dismiss", "modal");
@@ -237,12 +237,12 @@ async function showLocation(url:string) {
 
 async function getEpisodesTitle(element:string): Promise<string> {
     const episodesTitle = await getSingleEpisodes(element);
-    const episodesName = episodesTitle.name
+    const episodesName = episodesTitle.name;
     return episodesName;
 }
 
 async function getEpisodesCode(element:string): Promise<string> {
     const episodesCode = await getSingleEpisodes(element);
-    const episodesId = episodesCode.episode 
+    const episodesId = episodesCode.episode;
     return episodesId;
 }

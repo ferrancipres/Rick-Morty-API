@@ -1,5 +1,5 @@
 <div>
-    <img src="/assets/img/rickandmorty_title.png" alt="rickandmorty-title">
+    <img src="assets/img/rickandmorty_title.png" alt="rickandmorty-title">
 </div>
 
 ## Overview ##

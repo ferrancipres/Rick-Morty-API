@@ -9,7 +9,7 @@ export async function getEpisodes(countPage:number): Promise<Episodes[]> {
         const data = await response.json();
         return data.results;
     } catch (error) {
-        throw new Error ("Something went wrong")
+        throw new Error ("Something went wrong");
     }
 }
 
@@ -19,7 +19,7 @@ export async function getSingleEpisodes(url:string): Promise<Episodes> {
         const data = await response.json();
         return data;
     } catch (error) {
-        throw new Error ("Something went wront")
+        throw new Error ("Something went wront");
     }
 }
 
@@ -29,7 +29,7 @@ export async function getSingleCharacter(url:string): Promise<Character> {
         const data = await response.json();
         return data;
     } catch (error) {
-        throw new Error ("Something went wront")
+        throw new Error ("Something went wront");
     }
 }
 
@@ -39,6 +39,6 @@ export async function getLocation(url:string): Promise<Location> {
         const data = await response.json();
         return data;
     } catch (error) {
-        throw new Error ("Something went wront")
+        throw new Error ("Something went wront");
     }
 }

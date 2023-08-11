@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content=“Rick&Morty” />
-    <meta name="keywords" content=“HTML,CSS,JS” />
+    <meta name="description" content=“Rick&MortyAPI” />
+    <meta name="keywords" content=“HTML,CSS,TS” />
     <meta name="author" content="Ferran Cipres Asensio" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -47,28 +47,28 @@
             </div>
           </div>
 
-          <div class="container-display" id="containerDisplay">
+          <div id="containerDisplay" class="container-display">
             <div class="gif-container">
               <img class="gif" src="/assets/img/worm-hole.gif" alt="worm-hole">
             </div>
-            <!-- Display of characters -->
+            <!-- List of characters -->
           </div>
         </div>        
       </aside>
 
       <section>
-        <div class="modal fade" id="characterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="characterModal" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title fs-4" id="characterModalLabel"> Character Details</h5>
+                <h5 id="characterModalLabel" class="modal-title fs-4"> Character Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
               </div>  
-              <div class="modal-body" id="characterModalBody">
+              <div id="characterModalBody" class="modal-body">
               <!-- Character details -->
               </div>
-              <div class="modal-list-episodes " id="characterModalListEpisodes">
-                <h5 class="modal-title ms-3 fs-4" id="characterModalLabel"> List of Episodes</h5>
+              <div id="characterModalListEpisodes" class="modal-list-episodes">
+                <h5 id="characterModalLabel" class="modal-title ms-3 fs-4"> List of Episodes</h5>
                 <hr>
                 <ul id="containerEpisodes">
                 <!-- List of episodes --> 
